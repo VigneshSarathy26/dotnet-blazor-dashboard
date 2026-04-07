@@ -1,0 +1,16 @@
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\bin\Debug\net10.0\DotNetBlazorDashboard.Application.deps.json
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\bin\Debug\net10.0\DotNetBlazorDashboard.Application.dll
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\bin\Debug\net10.0\DotNetBlazorDashboard.Application.pdb
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\bin\Debug\net10.0\DotNetBlazorDashboard.Domain.dll
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\bin\Debug\net10.0\DotNetBlazorDashboard.Domain.pdb
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.csproj.AssemblyReference.cache
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.AssemblyInfoInputs.cache
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.AssemblyInfo.cs
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.csproj.CoreCompileInputs.cache
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.sourcelink.json
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBl.854EFD4F.Up2Date
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.dll
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\refint\DotNetBlazorDashboard.Application.dll
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\DotNetBlazorDashboard.Application.pdb
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Application\obj\Debug\net10.0\ref\DotNetBlazorDashboard.Application.dll

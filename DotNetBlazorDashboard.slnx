@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="DotNetBlazorDashboard.Application/DotNetBlazorDashboard.Application.csproj" />
+  <Project Path="DotNetBlazorDashboard.Domain/DotNetBlazorDashboard.Domain.csproj" />
+  <Project Path="DotNetBlazorDashboard.Infrastructure/DotNetBlazorDashboard.Infrastructure.csproj" />
+  <Project Path="DotNetBlazorDashboard.Tests/DotNetBlazorDashboard.Tests.csproj" />
+  <Project Path="DotNetBlazorDashboard.Web.Client/DotNetBlazorDashboard.Web.Client.csproj" />
+  <Project Path="DotNetBlazorDashboard.Web/DotNetBlazorDashboard.Web.csproj" />
+</Solution>

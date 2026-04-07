@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "DotNetBlazorDashboard.Application/1.0.0": {
+        "dependencies": {
+          "DotNetBlazorDashboard.Domain": "1.0.0"
+        },
+        "runtime": {
+          "DotNetBlazorDashboard.Application.dll": {}
+        }
+      },
+      "DotNetBlazorDashboard.Domain/1.0.0": {
+        "runtime": {
+          "DotNetBlazorDashboard.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DotNetBlazorDashboard.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DotNetBlazorDashboard.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,2 @@
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Web\obj\Debug\net10.0\EmbeddedAttribute.cs
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Web\obj\Debug\net10.0\ValidatableTypeAttribute.cs

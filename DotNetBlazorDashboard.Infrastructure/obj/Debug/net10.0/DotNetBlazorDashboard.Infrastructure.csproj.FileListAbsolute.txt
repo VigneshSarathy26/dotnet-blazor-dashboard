@@ -1,0 +1,6 @@
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Infrastructure\obj\Debug\net10.0\DotNetBlazorDashboard.Infrastructure.csproj.AssemblyReference.cache
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Infrastructure\obj\Debug\net10.0\DotNetBlazorDashboard.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Infrastructure\obj\Debug\net10.0\DotNetBlazorDashboard.Infrastructure.AssemblyInfoInputs.cache
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Infrastructure\obj\Debug\net10.0\DotNetBlazorDashboard.Infrastructure.AssemblyInfo.cs
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Infrastructure\obj\Debug\net10.0\DotNetBlazorDashboard.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Repositories\dotnet-blazor-dashboard\DotNetBlazorDashboard.Infrastructure\obj\Debug\net10.0\DotNetBlazorDashboard.Infrastructure.sourcelink.json
