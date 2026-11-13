@@ -1,6 +1,5 @@
-﻿namespace DotNetBlazorDashboard.Domain;
+namespace DotNetBlazorDashboard.Domain;
 
 public class Class1
 {
-
 }

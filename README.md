@@ -1,29 +1,60 @@
 # 🚀 DotNet Blazor Dashboard
 
-A modern, enterprise-ready web dashboard built on **ASP.NET Core** and **Blazor Interactive Auto Mode**. Designed for high performance, cross-platform flexibility, and scalable multi-cloud deployment.
+A modern, enterprise-ready web dashboard built on **.NET 10.0**, **ASP.NET Core**, and **Blazor Interactive Auto Mode** (Server SSR + Client WebAssembly). Designed for high performance, cross-platform flexibility, and scalable multi-cloud deployment.
 
 ---
 
 ## 🏗 Architecture
-The application follows **Clean Architecture** and **Domain-Driven Design (DDD)** principles, ensuring a clear separation of concerns and a testable codebase.
+The application follows **Clean Architecture** and **Domain-Driven Design (DDD)** principles, ensuring a clear separation of concerns, testability, and maintainability.
 
-- **Presentation Layer**: Blazor Web App (Interactive Auto) providing a seamless SSR + WASM experience.
-- **Application Layer**: CQRS pattern using MediatR for handling commands and queries.
-- **Domain Layer**: Pure domain models, entities, and business rules.
-- **Infrastructure Layer**: Data persistence (EF Core), external service integrations, and cross-cutting concerns.
+```
+       ┌────────────────────────────────────────────────────────┐
+       │              Presentation Layer (Blazor)               │
+       │   DotNetBlazorDashboard.Web (ASP.NET Core Host / SSR)   │
+       │   DotNetBlazorDashboard.Web.Client (WASM Components)   │
+       └───────────────────────────┬────────────────────────────┘
+                                   │
+                                   ▼
+       ┌────────────────────────────────────────────────────────┐
+       │               Application Layer (CQRS)                 │
+       │     DotNetBlazorDashboard.Application (MediatR)        │
+       └───────────────────────────┬────────────────────────────┘
+                                   │
+                                   ▼
+       ┌────────────────────────────────────────────────────────┐
+       │                  Domain Layer (DDD)                    │
+       │       DotNetBlazorDashboard.Domain (Entities/VOs)      │
+       └───────────────────────────┬────────────────────────────┘
+                                   │
+                                   ▼
+       ┌────────────────────────────────────────────────────────┐
+       │                  Infrastructure Layer                  │
+       │    DotNetBlazorDashboard.Infrastructure (EF Core,      │
+       │     PostgreSQL, MS-SQL Server, Redis Normalizers)      │
+       └────────────────────────────────────────────────────────┘
+```
+
+- **Presentation Layer**: Blazor Web App (Interactive Auto) providing a seamless pre-rendered Server-Side Rendering (SSR) bootstrap transitioning to WebAssembly (WASM).
+- **Application Layer**: CQRS pattern using MediatR for commands, queries, and handlers.
+- **Domain Layer**: Pure business logic, aggregates, entities, and value objects.
+- **Infrastructure Layer**: Data persistence (EF Core), database providers (PostgreSQL / SQL Server), distributed caching (Redis), and cloud service normalizers.
 
 ---
 
 ## 🛠 Tech Stack
-| Component | Technology |
-| :--- | :--- |
-| **Framework** | .NET 10.0 (ASP.NET Core) |
-| **UI Library** | Blazor (Server + WebAssembly) |
-| **Databases** | PostgreSQL & MS-SQL Server |
-| **Caching** | Redis (Distributed Cache) |
-| **Reverse Proxy** | Nginx |
-| **Observability** | Prometheus & Grafana |
-| **Containerization** | Docker & Docker Compose |
+
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Framework** | .NET 10.0 (ASP.NET Core) | Latest LTS enterprise framework |
+| **UI Library** | Blazor (Interactive Auto) | Dual-mode Server + Client WebAssembly |
+| **Databases** | PostgreSQL & MS-SQL Server | Entity Framework Core 10.0 with dual provider support |
+| **Distributed Cache** | Redis | Session state & high-performance query caching |
+| **Reverse Proxy** | Nginx | Reverse proxy, static asset delivery, and SSL termination |
+| **Unit Testing** | xUnit & NUnit | Multi-framework support for unit and integration tests |
+| **E2E Testing** | Microsoft Playwright | Automated browser-level end-to-end UI testing |
+| **Code Quality & Linting** | StyleCop.Analyzers | Compile-time static analysis and style enforcement |
+| **IaC (Infrastructure)** | Terraform, Bicep, ARM | Modular cloud provisioning for Azure environments |
+| **Containerization** | Docker & Docker Compose | Multi-stage production builds & local orchestration |
 
 ---
 
@@ -39,38 +70,51 @@ Built with multi-cloud flexibility in mind, featuring specialized service normal
 
 ### Prerequisites
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) (for local development)
-
-### Option A: Docker Compose (Full Stack)
-The fastest way to spin up the entire environment:
-```bash
-docker-compose up -d --build
-```
-
-### Port Mappings & Interfaces
-| Service | Internal Port | External Port | URL |
-| :--- | :--- | :--- | :--- |
-| **Main Web Dashboard** | 8080 (via Nginx) | 80 | [http://localhost](http://localhost) |
-| **ASP.NET API** | 8080 | 5000 | [http://localhost:5000](http://localhost:5000) |
-| **PostgreSQL** | 5432 | 5432 | `localhost:5432` |
-| **MS-SQL Server** | 1433 | 1433 | `localhost:1433` |
-| **Redis** | 6379 | 6379 | `localhost:6379` |
-| **Prometheus** | 9090 | 9090 | [http://localhost:9090](http://localhost:9090) |
+- [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) (for local CLI development)
+- PowerShell 7+ (recommended for cross-platform scripts)
 
 ---
 
-### Option B: Local Native Development (dotnet SDK)
-If you prefer to run the .NET app natively on your host machine but keep the infrastructure dependencies in docker:
+### Option A: Docker Compose (Full Stack)
 
-1. **Spin up dependencies only**:
+Spin up the entire stack including Nginx, Web application, PostgreSQL, MS-SQL Server, and Redis:
+
+```bash
+docker compose up -d --build
+```
+
+#### Port Mappings & Interfaces
+
+| Service | Internal Port | External Port | URL |
+| :--- | :--- | :--- | :--- |
+| **Main Web Dashboard (Nginx)** | 8080 | 80 | [http://localhost](http://localhost) |
+| **Direct ASP.NET Web App** | 8080 | 5000 | [http://localhost:5000](http://localhost:5000) |
+| **PostgreSQL** | 5432 | 5432 | `localhost:5432` |
+| **MS-SQL Server** | 1433 | 1433 | `localhost:1433` |
+| **Redis** | 6379 | 6379 | `localhost:6379` |
+
+To stop the containers:
+```bash
+docker compose down
+```
+
+---
+
+### Option B: Local Development (Host .NET SDK)
+
+If you prefer to run the .NET application locally on your host while keeping dependencies in Docker:
+
+1. **Spin up backend dependencies only**:
    ```bash
-   docker-compose up -d pgdb redis prometheus
+   docker compose up -d pgdb redis
    ```
+
 2. **Environment Configuration**:
-   Copy `.env.example` to `.env` and adjust connection strings.
+   Copy `.env.example` to `.env` and set your desired database provider (`PostgreSQL` or `SqlServer`):
    ```bash
    cp .env.example .env
    ```
+
 3. **Run the application**:
    ```bash
    cd DotNetBlazorDashboard.Web
@@ -79,56 +123,104 @@ If you prefer to run the .NET app natively on your host machine but keep the inf
 
 ---
 
-## 📥 API Reference
-### Ingestion Endpoints
-`POST /api/ingestion/record`
-Ingest a single billing record.
+## 🧪 Testing & Code Quality
 
-`POST /api/ingestion/batch`
-Ingest a batch of billing records for bulk processing.
+The repository includes a comprehensive testing suite and compile-time code analysis.
 
----
+### 1. Unit & Integration Tests (xUnit & NUnit)
+The test project supports both **xUnit** and **NUnit** test runners:
 
-## 🧪 Testing
-Includes a comprehensive test suite using xUnit and Moq:
-- **Unit Tests**: Domain logic and Application services.
-- **Integration Tests**: Repository-to-DB validation.
-- **E2E Tests**: API testing using `WebApplicationFactory`.
-
-Run all tests:
 ```bash
+# Run all tests in the solution
 dotnet test
+
+# Run only xUnit tests
+dotnet test --filter "FullyQualifiedName~UnitTest1"
+
+# Run only NUnit tests
+dotnet test --filter "FullyQualifiedName~SampleNUnitTests"
+```
+
+### 2. End-to-End (E2E) UI Testing (Playwright)
+Browser-level automated UI tests use **Microsoft Playwright**:
+
+```bash
+# 1. Install required browser binaries (one-time setup)
+pwsh DotNetBlazorDashboard.Tests/bin/Debug/net10.0/playwright.ps1 install
+
+# 2. Run Playwright E2E tests
+dotnet test --filter "FullyQualifiedName~Playwright"
+```
+
+### 3. Static Code Analysis (StyleCop)
+Style rules and formatting conventions are configured via:
+- `Directory.Build.props`: Globally applies `StyleCop.Analyzers` to all projects.
+- `stylecop.json`: Defines documentation and ordering rules.
+- `.editorconfig`: Enforces formatting and suppresses non-blocking analyzer diagnostics.
+
+StyleCop analysis runs automatically during every build:
+```bash
+dotnet build
 ```
 
 ---
 
-## 📊 Observability & Monitoring
-- **Prometheus**: Metrics collection via `/metrics` endpoint.
-- **Nginx Logs**: Accessible via `docker logs nginx`.
-- **Structured Logging**: Integrated with Microsoft.Extensions.Logging.
-
----
-
 ## 📂 Project Structure
+
 ```text
-├── DotNetBlazorDashboard.Web/           # ASP.NET Core host (Blazor Web App)
-├── DotNetBlazorDashboard.Web.Client/    # Blazor WASM components (Client part)
-├── DotNetBlazorDashboard.Application/   # Use-cases (CQRS, MediatR)
-├── DotNetBlazorDashboard.Domain/        # Entities, Value Objects, Enums
-├── DotNetBlazorDashboard.Infrastructure/ # EF Core, Redis, Normalizers
-├── DotNetBlazorDashboard.Tests/         # Unit, Integration, E2E tests
-├── infra/                               # Prometheus, Nginx config
-├── Dockerfile                           # Multi-stage production build
-└── docker-compose.yml                   # Local dev stack
+├── .editorconfig                                 # Code formatting & StyleCop rules
+├── Directory.Build.props                         # Global MSBuild properties & analyzers
+├── stylecop.json                                 # StyleCop configuration
+├── Dockerfile                                    # Multi-stage production build
+├── docker-compose.yml                            # Local dev environment orchestration
+├── DotNetBlazorDashboard.slnx                    # Solution file
+├── nginx/
+│   └── nginx.conf                                # Nginx reverse proxy configuration
+├── infra/                                        # Infrastructure as Code (IaC)
+│   ├── terraform/                                # Terraform root modules & environments
+│   │   ├── environments/ (dev, prod)
+│   │   └── modules/azure/ (compute, database, networking)
+│   ├── azure_bicep/                              # Azure Bicep modules & environments
+│   └── azure_arm_template/                       # ARM JSON deployment templates
+├── DotNetBlazorDashboard.Web/                    # ASP.NET Core Host (Blazor Server SSR)
+│   ├── Components/                               # App root, pages, and layouts
+│   ├── Program.cs                                # Application startup and DI
+│   └── appsettings.json                          # Configuration & connection strings
+├── DotNetBlazorDashboard.Web.Client/             # Blazor WebAssembly Client project
+│   ├── Pages/                                    # Interactive WASM components
+│   └── _Imports.razor                            # Client namespaces & directives
+├── DotNetBlazorDashboard.Application/            # CQRS commands, queries, MediatR handlers
+├── DotNetBlazorDashboard.Domain/                 # Entities, Value Objects, Domain logic
+├── DotNetBlazorDashboard.Infrastructure/         # EF Core, PostgreSQL/MSSQL, Redis caching
+│   ├── Data/DashboardDbContext.cs                # EF Core DbContext
+│   └── Extensions/ServiceCollectionExtensions.cs # Infrastructure DI extensions
+└── DotNetBlazorDashboard.Tests/                  # Test suite
+    ├── UnitTest1.cs                              # xUnit sample tests
+    ├── SampleNUnitTests.cs                       # NUnit sample tests
+    └── PlaywrightE2ETests.cs                     # Playwright E2E browser tests
 ```
 
 ---
 
 ## 🔧 Troubleshooting
 
-> [!WARNING]
-> **.NET 10 Preview Packages**: If the `Infrastructure` project fails to build, check if the SQL Server or Npgsql preview packages are correctly resolved in your NuGet cache.
+### 1. Docker Compose Image Tag Error (`repository name must be lowercase`)
+Docker requires image tags to be lowercase. In `docker-compose.yml`, services must use lowercase names (e.g. `web` instead of `dotNetBlazorDashboard.web`).
 
-- **Check Container Status**: `docker-compose ps`
-- **View Logs**: `docker-compose logs -f dotNetBlazorDashboard.web`
-- **Database Connection Issues**: Ensure the `DatabaseProvider` environment variable matches your target DB (PostgreSQL/SqlServer).
+### 2. Blazor WebAssembly ReadyToRun Compilation (`NETSDK1095`)
+ReadyToRun (`PublishReadyToRun=true`) cross-compiles machine code for native CPU targets (`linux-x64`), which is incompatible with `browser-wasm` client projects. The client project explicitly sets `<PublishReadyToRun>false</PublishReadyToRun>`.
+
+### 3. EF Core Package Version Conflicts (`NU1605: Detected package downgrade`)
+Ensure all `Microsoft.EntityFrameworkCore.*` packages in `DotNetBlazorDashboard.Infrastructure.csproj` align to the same version (e.g., `10.0.5`).
+
+### 4. Viewing Container Logs
+```bash
+# View web application logs
+docker compose logs -f web
+
+# View reverse proxy logs
+docker compose logs -f nginx
+
+# Check status of all containers
+docker compose ps
+```

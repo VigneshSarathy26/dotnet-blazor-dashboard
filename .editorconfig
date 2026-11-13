@@ -1,0 +1,28 @@
+root = true
+
+[*.cs]
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# StyleCop Analyzers severity settings
+dotnet_diagnostic.SA0001.severity = none       # XML comments analysis disabled
+dotnet_diagnostic.SA1633.severity = none       # File header requirement
+dotnet_diagnostic.SA1600.severity = none       # Elements should be documented
+dotnet_diagnostic.SA1200.severity = none       # Using directives placement
+dotnet_diagnostic.SA1101.severity = none       # Prefix local calls with this
+dotnet_diagnostic.SA1309.severity = none       # Field names should not begin with underscore
+dotnet_diagnostic.SA1402.severity = suggestion # File may only contain a single type
+dotnet_diagnostic.SA1649.severity = none       # File name matches type name
+dotnet_diagnostic.SA1512.severity = none       # Single-line comment followed by blank line
+dotnet_diagnostic.SA1515.severity = none       # Single-line comment preceded by blank line
+dotnet_diagnostic.SA1513.severity = none       # Closing brace followed by blank line
+dotnet_diagnostic.SA1505.severity = none       # Opening brace followed by blank line
+dotnet_diagnostic.SA1508.severity = none       # Closing brace preceded by blank line
+dotnet_diagnostic.SA1204.severity = none       # Static members before non-static
+dotnet_diagnostic.SA1502.severity = none       # Element should not be on a single line
+dotnet_diagnostic.SA1128.severity = none       # Put constructor initializers on their own line
+dotnet_diagnostic.SA1028.severity = none       # Trailing whitespace
