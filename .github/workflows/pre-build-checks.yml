@@ -8,9 +8,12 @@ on:
 
 jobs:
   lint:
+    name: Linting
     runs-on: windows-latest
+    permissions:
+      contents: read # for checkout to fetch code
     steps:
-      - name: checkout
+      - name: Checkout code
         uses: actions/checkout@v7
       - name: lint 
         run: dotnet format --verify-no-changes --severity warn
