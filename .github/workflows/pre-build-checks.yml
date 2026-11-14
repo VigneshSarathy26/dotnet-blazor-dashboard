@@ -8,8 +8,9 @@ on:
 
 jobs:
   lint:
-    runs-as: ubuntu-latest
+    runs-as: windows-latest
     steps:
       - name: checkout
         uses: actions/checkout@v7
-      
+      - name: lint 
+        run: dotnet format --verify-no-changes --severity warn

@@ -152,15 +152,36 @@ pwsh DotNetBlazorDashboard.Tests/bin/Debug/net10.0/playwright.ps1 install
 dotnet test --filter "FullyQualifiedName~Playwright"
 ```
 
-### 3. Static Code Analysis (StyleCop)
-Style rules and formatting conventions are configured via:
-- `Directory.Build.props`: Globally applies `StyleCop.Analyzers` to all projects.
-- `stylecop.json`: Defines documentation and ordering rules.
-- `.editorconfig`: Enforces formatting and suppresses non-blocking analyzer diagnostics.
+### 3. Linting & Static Code Analysis (StyleCop & dotnet format)
+Style rules and formatting conventions are enforced via **StyleCop.Analyzers** and **.editorconfig**:
+- `Directory.Build.props`: Globally enables analyzer rules across all projects.
+- `stylecop.json`: Configures StyleCop settings, company metadata, and using directives.
+- `.editorconfig`: Configures whitespace, indentation, naming conventions, and diagnostic severity.
 
-StyleCop analysis runs automatically during every build:
+#### A. Run Linting Checks (Verification Mode - CI & Pre-build)
+Check if the codebase conforms to all style, formatting, and analyzer rules without modifying files (exits with non-zero code on violation):
 ```bash
-dotnet build
+# Verify formatting, style conventions, and analyzer rules across the solution
+dotnet format --verify-no-changes --severity warn
+
+# Or run specific check categories independently:
+dotnet format whitespace --verify-no-changes
+dotnet format style --verify-no-changes
+dotnet format analyzers --verify-no-changes
+```
+
+#### B. Auto-Fix Linting & Formatting Issues
+Automatically format and fix rule violations across all projects in the solution:
+```bash
+# Automatically fix formatting, style, and analyzer issues
+dotnet format
+```
+
+#### C. Run StyleCop Analysis via Build
+Run static code analysis during compilation and treat warnings as errors (recommended for CI pipelines):
+```bash
+# Clean build enforcing zero analyzer warnings
+dotnet build --no-incremental /warnaserror
 ```
 
 ---
