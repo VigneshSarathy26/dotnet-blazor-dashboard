@@ -17,3 +17,11 @@ jobs:
         uses: actions/checkout@v7
       - name: lint 
         run: dotnet format --verify-no-changes --severity warn
+  sonarqube:
+    name: sonarqube_scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for checkout to fetch code
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
