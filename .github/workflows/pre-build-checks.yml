@@ -9,7 +9,7 @@ on:
 jobs:
   lint:
     name: Linting
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: read # for checkout to fetch code
     steps:
